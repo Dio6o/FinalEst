@@ -12,6 +12,7 @@ public class Main {
         SelectionSort selection = new SelectionSort();
         MergeSort merge = new MergeSort();
         QuickSort quick = new QuickSort();
+        HeapSort heap = new HeapSort();
 
         int[] arr = {3, 4, 5, 9, 12, 1, 2, 19, 1, 13, 11, 2, 13, 10, 12, 10, 25, 0, 1, 26};
 
@@ -53,8 +54,15 @@ public class Main {
         quick.quickSort(arr_quick, 0, arr_quick.length - 1);
         System.out.println(Arrays.toString(arr_quick));
         System.out.println("Trocas: " + quick.getSwaps() + ", comparacoes: " + quick.getComparisons());
+        System.out.println();
 
-
+        //Heap sort
+        int[] arr_heap = arr.clone();
+        System.out.println("Heap Sort: ");
+        heap.heapSort(arr_heap);
+        System.out.println(Arrays.toString(arr_heap));
+        System.out.println("Trocas: " + heap.getSwaps() + ", comparacoes: " + heap.getComparisons());
+        System.out.println();
 
     }
 }
