@@ -1,8 +1,6 @@
 package main;
 
-import sortMethods.BubbleSort;
-import sortMethods.InsertionSort;
-import sortMethods.SelectionSort;
+import sortMethods.*;
 
 import java.util.Arrays;
 
@@ -12,6 +10,8 @@ public class Main {
         BubbleSort bubble = new BubbleSort();
         InsertionSort insertion = new InsertionSort();
         SelectionSort selection = new SelectionSort();
+        MergeSort merge = new MergeSort();
+        QuickSort quick = new QuickSort();
 
         int[] arr = {3, 4, 5, 9, 12, 1, 2, 19, 1, 13, 11, 2, 13, 10, 12, 10, 25, 0, 1, 26};
 
@@ -39,7 +39,20 @@ public class Main {
         System.out.println("Trocas: " + selection.getSwaps() + ", comparacoes: " + selection.getComparisons());
         System.out.println();
 
+        //Merge sort
+        int[] arr_merge = arr.clone();
+        System.out.println("Merge Sort: ");
+        merge.mergeSort(arr_merge);
+        System.out.println(Arrays.toString(arr_merge));
+        System.out.println("Trocas: " + merge.getSwaps() + ", comparacoes: " + merge.getComparisons());
+        System.out.println();
 
+        //Quick sort
+        int[] arr_quick = arr.clone();
+        System.out.println("Quick Sort: ");
+        quick.quickSort(arr_quick, 0, arr_quick.length - 1);
+        System.out.println(Arrays.toString(arr_quick));
+        System.out.println("Trocas: " + quick.getSwaps() + ", comparacoes: " + quick.getComparisons());
 
 
 

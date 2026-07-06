@@ -16,6 +16,9 @@ public class SelectionSort {
     }
 
     public void selectionSort(int[] arr) {
+        if (empty(arr)){
+            return;
+        }
         int min;
         int temp;
 
@@ -35,6 +38,10 @@ public class SelectionSort {
             swaps++;
 
         }
+    }
+
+    public boolean empty(int[] arr) {
+        return arr.length == 0;
     }
 
 }

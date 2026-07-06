@@ -18,6 +18,10 @@ public class BubbleSort {
     }
 
     public void bubbleSort(int[] arr){
+        if (empty(arr)){
+            return;
+        }
+
         for (int i = 0; i < arr.length - 1; i++){
             //Percorre toda a lista comparando se o item e maior ou menor
             for (int j = 0; j < arr.length - 1 - i; j++){
@@ -33,6 +37,10 @@ public class BubbleSort {
             }
         }
 
+    }
+
+    public boolean empty(int[] arr) {
+        return arr.length == 0;
     }
 
 

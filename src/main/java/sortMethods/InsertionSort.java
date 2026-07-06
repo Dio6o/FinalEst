@@ -16,6 +16,10 @@ public class InsertionSort {
     }
 
     public void insertionSort(int[] arr){
+        if (empty(arr)){
+            return;
+        }
+
         int temp;
         int j;
         for (int i = 1; i < arr.length - 1; i++){
@@ -36,6 +40,10 @@ public class InsertionSort {
             swaps++;
         }
 
+    }
+
+    public boolean empty(int[] arr) {
+        return arr.length == 0;
     }
 
 }
