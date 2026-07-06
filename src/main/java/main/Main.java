@@ -13,6 +13,7 @@ public class Main {
         MergeSort merge = new MergeSort();
         QuickSort quick = new QuickSort();
         HeapSort heap = new HeapSort();
+        BucketSort bucket = new BucketSort();
 
         int[] arr = {3, 4, 5, 9, 12, 1, 2, 19, 1, 13, 11, 2, 13, 10, 12, 10, 25, 0, 1, 26};
 
@@ -63,6 +64,15 @@ public class Main {
         System.out.println(Arrays.toString(arr_heap));
         System.out.println("Trocas: " + heap.getSwaps() + ", comparacoes: " + heap.getComparisons());
         System.out.println();
+
+        //Bucket sort
+        int[] arr_bucket = arr.clone();
+        System.out.println("Bucket Sort: ");
+        bucket.bucketSort(arr_bucket, 10);
+        System.out.println(Arrays.toString(arr_bucket));
+        System.out.println("Trocas: " + bucket.getSwaps() + ", comparacoes: " + bucket.getComparisons());
+        System.out.println();
+
 
     }
 }
