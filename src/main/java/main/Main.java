@@ -15,63 +15,156 @@ public class Main {
         HeapSort heap = new HeapSort();
         BucketSort bucket = new BucketSort();
 
-        int[] arr = {3, 4, 5, 9, 12, 1, 2, 19, 1, 13, 11, 2, 13, 10, 12, 10, 25, 0, 1, 26};
+
+        //Listas para testes envolvendo 100 mil elementos
+        int[] arrayOrdered = new int[100000];
+        int[] arrayUnordered = new int[100000];
+
+        for (int i = 0; i < 100000; i++) {
+            arrayOrdered[i] = i;
+            arrayUnordered[i] = (int) (Math.random() * 10000) + 1;
+        }
+
+        int[] arrayReverse = new int[100000];
+
+        for (int i = 0; i < arrayReverse.length; i++) {
+            arrayReverse[i] = arrayOrdered[arrayOrdered.length - 1 - i];
+        }
+
+        //Testes para 100 mil elementos
+
+        long startTime;
+        long endTime;
 
         //Bubble sort
-        int[] arr_bubble = arr.clone();
-        System.out.println("Bubble Sort: ");
-        bubble.bubbleSort(arr_bubble);
-        System.out.println(Arrays.toString(arr_bubble));
-        System.out.println("Trocas: " + bubble.getSwaps() + ", comparacoes: " + bubble.getComparisons());
-        System.out.println();
+//        System.out.println("Bubble Sort: ");
+//
+//        long startTime = System.nanoTime();
+//        bubble.bubbleSort(arrayOrdered);
+//        long endTime = System.nanoTime();
+//        System.out.println("Lista ordenada: " + ((endTime - startTime) / 1_000_000.0) + "ms");
+//
+//        startTime = System.nanoTime();
+//        bubble.bubbleSort(arrayUnordered);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista não ordenada: " + ((endTime - startTime) / 1_000_000.0) + "ms");
+//
+//        startTime = System.nanoTime();
+//        bubble.bubbleSort(arrayReverse);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista reversa: " + ((endTime - startTime) / 1_000_000.0) + "ms");
 
         //Insertion sort
-        int[] arr_insertion = arr.clone();
-        System.out.println("Insertion Sort: ");
-        insertion.insertionSort(arr_insertion);
-        System.out.println(Arrays.toString(arr_insertion));
-        System.out.println("Trocas: " + insertion.getSwaps() + ", comparacoes: " + insertion.getComparisons());
-        System.out.println();
+        System.out.println("\nInsertion Sort:");
+
+        startTime = System.nanoTime();
+        insertion.insertionSort(arrayOrdered);
+        endTime = System.nanoTime();
+        System.out.println("Lista ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+
+        startTime = System.nanoTime();
+        insertion.insertionSort(arrayUnordered);
+        endTime = System.nanoTime();
+        System.out.println("Lista não ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+
+        startTime = System.nanoTime();
+        insertion.insertionSort(arrayReverse);
+        endTime = System.nanoTime();
+        System.out.println("Lista reversa: " + ((endTime - startTime) / 1_000_000.0) + " ms");
 
         //Selection sort
-        int[] arr_selection = arr.clone();
-        System.out.println("Selection Sort: ");
-        selection.selectionSort(arr_selection);
-        System.out.println(Arrays.toString(arr_selection));
-        System.out.println("Trocas: " + selection.getSwaps() + ", comparacoes: " + selection.getComparisons());
-        System.out.println();
+//        System.out.println("\nSelection Sort:");
+//
+//        startTime = System.nanoTime();
+//        selection.selectionSort(arrayOrdered);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        selection.selectionSort(arrayUnordered);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista não ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        selection.selectionSort(arrayReverse);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista reversa: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+
 
         //Merge sort
-        int[] arr_merge = arr.clone();
-        System.out.println("Merge Sort: ");
-        merge.mergeSort(arr_merge);
-        System.out.println(Arrays.toString(arr_merge));
-        System.out.println("Trocas: " + merge.getSwaps() + ", comparacoes: " + merge.getComparisons());
-        System.out.println();
+//        System.out.println("\nMerge Sort:");
+//
+//        startTime = System.nanoTime();
+//        merge.mergeSort(arrayOrdered);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        merge.mergeSort(arrayUnordered);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista não ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        merge.mergeSort(arrayReverse);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista reversa: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+
 
         //Quick sort
-        int[] arr_quick = arr.clone();
-        System.out.println("Quick Sort: ");
-        quick.quickSort(arr_quick, 0, arr_quick.length - 1);
-        System.out.println(Arrays.toString(arr_quick));
-        System.out.println("Trocas: " + quick.getSwaps() + ", comparacoes: " + quick.getComparisons());
-        System.out.println();
+//        System.out.println("\nQuick Sort:");
+//
+//        startTime = System.nanoTime();
+//        quick.quickSort(arrayOrdered, 0, arrayOrdered.length - 1);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        quick.quickSort(arrayUnordered, 0, arrayUnordered.length - 1);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista não ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        quick.quickSort(arrayReverse, 0, arrayReverse.length - 1);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista reversa: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+
 
         //Heap sort
-        int[] arr_heap = arr.clone();
-        System.out.println("Heap Sort: ");
-        heap.heapSort(arr_heap);
-        System.out.println(Arrays.toString(arr_heap));
-        System.out.println("Trocas: " + heap.getSwaps() + ", comparacoes: " + heap.getComparisons());
-        System.out.println();
+//        System.out.println("\nHeap Sort:");
+//
+//        startTime = System.nanoTime();
+//        heap.heapSort(arrayOrdered);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        heap.heapSort(arrayUnordered);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista não ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        heap.heapSort(arrayReverse);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista reversa: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+
 
         //Bucket sort
-        int[] arr_bucket = arr.clone();
-        System.out.println("Bucket Sort: ");
-        bucket.bucketSort(arr_bucket, 10);
-        System.out.println(Arrays.toString(arr_bucket));
-        System.out.println("Trocas: " + bucket.getSwaps() + ", comparacoes: " + bucket.getComparisons());
-        System.out.println();
+//        System.out.println("\nBucket Sort:");
+//
+//        startTime = System.nanoTime();
+//        bucket.bucketSort(arrayOrdered, 1000);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        bucket.bucketSort(arrayUnordered, 1000);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista não ordenada: " + ((endTime - startTime) / 1_000_000.0) + " ms");
+//
+//        startTime = System.nanoTime();
+//        bucket.bucketSort(arrayReverse, 1000);
+//        endTime = System.nanoTime();
+//        System.out.println("Lista reversa: " + ((endTime - startTime) / 1_000_000.0) + " ms");
 
 
     }

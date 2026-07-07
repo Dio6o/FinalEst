@@ -2,9 +2,9 @@ package sortMethods;
 
 public class MergeSort {
 
-    //Quantidade de trocas
+    // Quantidade de trocas
     private int swaps;
-    //Quantidade de comparacoes
+    // Quantidade de comparações
     private int comparisons;
 
     public int getSwaps() {
@@ -22,14 +22,14 @@ public class MergeSort {
             return;
         }
 
-        //Estabelece o tamanho das lista esquerda e direita
+        // Estabelece o tamanho das listas esquerda e direita
         int middle = lenght / 2;
         int[] left = new int[middle];
         int[] right = new int[lenght - middle];
 
-        //Indice para a lista da esquerda
+        // Índice para a lista da esquerda
         int i = 0;
-        //Indice para a lista da direita
+        // Índice para a lista da direita
         int j = 0;
 
         // Separa os elementos entre a lista esquerda e direita
@@ -41,10 +41,10 @@ public class MergeSort {
                 j++;
             }
         }
-        //Onde ocorre a divisao da lista inical em duas listas, esquerda e direita
+        // Onde ocorre a divisão da lista inicial em duas listas: esquerda e direita
         mergeSort(left);
         mergeSort(right);
-        // Funcao merge combina os dois lado em uma unica lista
+        // A função merge combina os dois lados em uma única lista
         merge(left, right, arr);
     }
 
@@ -54,11 +54,11 @@ public class MergeSort {
         int leftSize = arr.length / 2;
         int rightSize = arr.length - leftSize;
 
-        int i = 0; // Indice lista inical
-        int l = 0; // Indice lista esquerda
-        int r = 0; // Indice lista direita
+        int i = 0; // Índice da lista inicial
+        int l = 0; // Índice da lista esquerda
+        int r = 0; // Índice da lista direita
 
-        //Comparacao entre o lados para fazer as combinacoes
+        // Comparação entre os lados para fazer as combinações
         while (l < leftSize && r < rightSize){
             comparisons++;
             if (left[l] < right[r]){
@@ -74,16 +74,14 @@ public class MergeSort {
             }
         }
 
-        //Combina os lados na lista inical, caso um lado tenha elementos sobrando
+        // Combina os lados na lista inicial, caso um lado tenha elementos sobrando
         while (l < leftSize){
-            comparisons++;
             arr[i] = left[l];
             i++;
             l++;
             swaps++;
         }
         while (r < rightSize){
-            comparisons++;
             arr[i] = right[r];
             i++;
             r++;

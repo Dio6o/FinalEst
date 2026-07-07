@@ -6,7 +6,7 @@ public class BubbleSort {
 
     //Quantidade de trocas
     private int swaps;
-    //Quantidade de comparacoes
+    //Quantidade de comparações
     private int comparisons;
 
     public int getSwaps() {
@@ -18,17 +18,18 @@ public class BubbleSort {
     }
 
     public void bubbleSort(int[] arr){
-        if (empty(arr)){
+        // Verificação para ver se a lista não está vazia
+        if (arr.length == 0){
             return;
         }
 
         for (int i = 0; i < arr.length - 1; i++){
-            //Percorre toda a lista comparando se o item e maior ou menor
+            // Percorre toda a lista comparando se o item é maior ou menor
             for (int j = 0; j < arr.length - 1 - i; j++){
-                //Comparacao para descobrir se o proximo item e menor que o item na posicao atual
+                // Comparação para descobrir se o próximo item é menor que o item na posição atual
                 comparisons++;
                 if (arr[j +1] < arr[j]){
-                    //Troca de posicao dos itens, maior passa para frente e o menor volta uma posicao
+                    // Troca de posição dos itens: o maior passa para frente e o menor volta uma posição
                     int temp = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
@@ -39,9 +40,6 @@ public class BubbleSort {
 
     }
 
-    public boolean empty(int[] arr) {
-        return arr.length == 0;
-    }
 
 
 }

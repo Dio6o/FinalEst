@@ -2,9 +2,9 @@ package sortMethods;
 
 public class HeapSort {
 
-    //Quantidade de trocas
+    // Quantidade de trocas
     private int swaps;
-    //Quantidade de comparacoes
+    // Quantidade de comparações
     private int comparisons;
 
     public int getSwaps() {
@@ -19,13 +19,14 @@ public class HeapSort {
         int length = arr.length;
         int temp;
 
-        //Loop para a construcao do heap/monte
+        // Loop para a construção do heap/monte
         for (int i = length / 2 - 1; i >= 0; i--) {
             sink(arr, i, length);
         }
-        //Loop para colocar os valores em ordem
-        //Posiciona o item, arr[0], na ultima posicao da lista, arr[length - 1], reduzindo n por 1 e assim por diante
-        while (length > 0) {
+        // Loop para colocar os valores em ordem
+        // Posiciona o item arr[0] na última posição da lista, arr[length - 1],
+        // reduzindo n em 1, e assim por diante
+        while (length > 1) {
             swaps++;
             temp = arr[0];
             arr[0] = arr[length - 1];
@@ -36,30 +37,36 @@ public class HeapSort {
 
     }
 
-    //Funcao para 'afundar' o item na sua posicao certa
+    // Função para "afundar" o item na sua posição correta
     private void sink(int[] arr, int i, int n){
-        int k = i; //Indice do item para posicionar
-        boolean heap = false; //Condicao se ele ja foi posicionado corretamente
-        int j = (2 * k) + 1; // Indice da posicao dos filhos do item
-        int temp; // Variavel temporaria para a troca de posicoes
+        int k = i; // Índice do item para posicionar
+        boolean heap = false; // Condição para saber se ele já foi posicionado corretamente
+        int j = (2 * k) + 1; // Índice da posição dos filhos do item
+        int temp; // Variável temporária para a troca de posições
 
-        //Loop para organizar o nodo do heap
+        // Loop para organizar o nó do heap
         while (!heap && j < n){
-            comparisons++;
-            //Encontar o filho com maior valor
-            if (j + 1 < n && arr[j] < arr[j + 1]){
-                j =  j + 1;
+
+            // Encontrar o filho com maior valor
+            if (j + 1 < n){
+                comparisons++;
+                if(arr[j] < arr[j + 1]){
+                    j =  j + 1;
+                }
             }
-            //Verifica se o nodo que estamos afundando e maior que o valor do maior filho, se sim, finaliza o loop
+
+            // Verifica se o nó que estamos afundando é maior que o valor do maior filho;
+            // se sim, finaliza o loop
+            comparisons++;
             if(arr[k] >= arr[j]){
                 heap = true;
             }
-            // Se o nodo nao for maior do que o maior filho, o nodo desce e o maior filho sobe
+            // Se o nó não for maior do que o maior filho, o nó desce e o maior filho sobe
             else {
                 temp = arr[k];
                 arr[k] = arr[j];
                 arr[j] = temp;
-                //Loop comeca um nivel abaixo, buscando os filhos desse item e assim por diante
+                // O loop começa um nível abaixo, buscando os filhos desse item e assim por diante
                 k = j;
                 j = (2 * k) + 1;
             }

@@ -2,9 +2,9 @@ package sortMethods;
 
 public class QuickSort {
 
-    //Quantidade de trocas
+    // Quantidade de trocas
     private int swaps;
-    //Quantidade de comparacoes
+    // Quantidade de comparações
     private int comparisons;
 
     public int getSwaps() {
@@ -16,29 +16,29 @@ public class QuickSort {
     }
 
     public void quickSort(int[] arr, int start, int end){
-        //Caso Base
+        // Caso base
         if (end <= start){
             return;
         }
-        //Definicao do pivo
+        // Definição do pivô
         int pivot = partition(arr, start, end);
-        //Particao do lado esquerdo, usando recursao para ambos os lados
+        // Partição do lado esquerdo, usando recursão para ambos os lados
         quickSort(arr, start, pivot - 1);
-        //Particao do lado direito
+        // Partição do lado direito
         quickSort(arr, pivot + 1, end);
 
     }
 
-    // Funcao retorna a posicao do pivo
+    // Função que retorna a posição final do pivô
     public int partition(int[] arr, int start, int end){
 
-        int pivot = arr[end]; //Pivo sempre comeca do final
+        int pivot = arr[end]; // O pivô sempre começa no final
         int i = start - 1;
 
         int temp;
-        // Separa todos os itens menores que o pivo a esquerda e os maiores que o pivo a direita
+        // Separa todos os itens menores que o pivô à esquerda e os maiores que o pivô à direita
         for (int j = start; j <= end - 1; j++){
-            //Troca o item na posicao j se ele for menor ou igual que o pivo
+            // Troca o item na posição j se ele for menor que o pivô
             comparisons++;
             if (arr[j] < pivot){
                 i++;
@@ -49,7 +49,7 @@ public class QuickSort {
             }
         }
         i++;
-        // Posiciona o pivo na sua posicao final
+        // Posiciona o pivô na sua posição final
         temp = arr[i];
         arr[i] = arr[end];
         arr[end] = temp;

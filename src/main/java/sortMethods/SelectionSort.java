@@ -16,22 +16,24 @@ public class SelectionSort {
     }
 
     public void selectionSort(int[] arr) {
-        if (empty(arr)){
+        // Verificação se a lista não está vazia
+        if (arr.length == 0) {
             return;
         }
+
         int min;
         int temp;
 
-        for (int i = 0; i < arr.length - 2; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             min = i;
-            //Percorre a lista ate encontrar o menor elemento dos itens restantes
-            for (int j = i + 1; j < arr.length - 1; j++) {
+            // Percorre a lista até encontrar o menor elemento dos itens não ordenados restantes
+            for (int j = i + 1; j < arr.length; j++) {
                 comparisons++;
                 if (arr[j] < arr[min]) {
                     min = j;
                 }
             }
-            //Posiciona o menor elemento no comeco da lista
+            // Posiciona o menor elemento no começo da lista e passa para o próximo índice
             temp = arr[i];
             arr[i] = arr[min];
             arr[min] = temp;
@@ -40,8 +42,6 @@ public class SelectionSort {
         }
     }
 
-    public boolean empty(int[] arr) {
-        return arr.length == 0;
-    }
+
 
 }
