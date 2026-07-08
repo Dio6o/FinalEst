@@ -3,19 +3,30 @@ package sortMethods;
 public class HeapSort {
 
     // Quantidade de trocas
-    private int swaps;
+    private long swaps;
     // Quantidade de comparações
-    private int comparisons;
+    private long comparisons;
 
-    public int getSwaps() {
+    public long getSwaps() {
         return swaps;
     }
 
-    public int getComparisons() {
+    public void setSwaps(long swaps) {
+        this.swaps = swaps;
+    }
+
+    public long getComparisons() {
         return comparisons;
     }
 
+    public void setComparisons(long comparisons) {
+        this.comparisons = comparisons;
+    }
+
     public void heapSort(int[] arr){
+        setComparisons(0);
+        setSwaps(0);
+
         int length = arr.length;
         int temp;
 
@@ -27,7 +38,7 @@ public class HeapSort {
         // Posiciona o item arr[0] na última posição da lista, arr[length - 1],
         // reduzindo n em 1, e assim por diante
         while (length > 1) {
-            swaps++;
+            setSwaps(getSwaps() + 1);
             temp = arr[0];
             arr[0] = arr[length - 1];
             arr[length - 1] = temp;
@@ -43,21 +54,18 @@ public class HeapSort {
         boolean heap = false; // Condição para saber se ele já foi posicionado corretamente
         int j = (2 * k) + 1; // Índice da posição dos filhos do item
         int temp; // Variável temporária para a troca de posições
-
         // Loop para organizar o nó do heap
         while (!heap && j < n){
-
             // Encontrar o filho com maior valor
             if (j + 1 < n){
-                comparisons++;
+                setComparisons(getComparisons() + 1);
                 if(arr[j] < arr[j + 1]){
                     j =  j + 1;
                 }
             }
-
             // Verifica se o nó que estamos afundando é maior que o valor do maior filho;
             // se sim, finaliza o loop
-            comparisons++;
+            setComparisons(getComparisons() + 1);
             if(arr[k] >= arr[j]){
                 heap = true;
             }

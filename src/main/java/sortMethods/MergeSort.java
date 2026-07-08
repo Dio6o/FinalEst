@@ -3,16 +3,24 @@ package sortMethods;
 public class MergeSort {
 
     // Quantidade de trocas
-    private int swaps;
+    private long swaps;
     // Quantidade de comparações
-    private int comparisons;
+    private long comparisons;
 
-    public int getSwaps() {
+    public long getSwaps() {
         return swaps;
     }
 
-    public int getComparisons() {
+    public void setSwaps(long swaps) {
+        this.swaps = swaps;
+    }
+
+    public long getComparisons() {
         return comparisons;
+    }
+
+    public void setComparisons(long comparisons) {
+        this.comparisons = comparisons;
     }
 
     public void mergeSort(int[] arr) {
@@ -21,7 +29,6 @@ public class MergeSort {
         if (lenght <= 1){
             return;
         }
-
         // Estabelece o tamanho das listas esquerda e direita
         int middle = lenght / 2;
         int[] left = new int[middle];
@@ -49,43 +56,41 @@ public class MergeSort {
     }
 
     private void merge(int[] left, int[] right, int[] arr){
-
+        setComparisons(0);
+        setSwaps(0);
         // Tamanho do lado esquerdo e direito
         int leftSize = arr.length / 2;
         int rightSize = arr.length - leftSize;
-
         int i = 0; // Índice da lista inicial
         int l = 0; // Índice da lista esquerda
         int r = 0; // Índice da lista direita
-
         // Comparação entre os lados para fazer as combinações
         while (l < leftSize && r < rightSize){
-            comparisons++;
+            setComparisons(getComparisons() + 1);
             if (left[l] < right[r]){
                 arr[i] = left[l];
                 i++;
                 l++;
-                swaps++;
+                setSwaps(getSwaps() + 1);
             } else {
                 arr[i] = right[r];
                 i++;
                 r++;
-                swaps++;
+                setSwaps(getSwaps() + 1);
             }
         }
-
         // Combina os lados na lista inicial, caso um lado tenha elementos sobrando
         while (l < leftSize){
             arr[i] = left[l];
             i++;
             l++;
-            swaps++;
+            setSwaps(getSwaps() + 1);
         }
         while (r < rightSize){
             arr[i] = right[r];
             i++;
             r++;
-            swaps++;
+            setSwaps(getSwaps() + 1);
         }
 
     }

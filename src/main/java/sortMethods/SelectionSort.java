@@ -3,32 +3,40 @@ package sortMethods;
 public class SelectionSort {
 
     //Quantidade de trocas
-    private int swaps;
+    private long swaps;
     //Quantidade de comparacoes
-    private int comparisons;
+    private long comparisons;
 
-    public int getSwaps() {
+    public long getSwaps() {
         return swaps;
     }
 
-    public int getComparisons() {
+    public void setSwaps(long swaps) {
+        this.swaps = swaps;
+    }
+
+    public long getComparisons() {
         return comparisons;
     }
 
+    public void setComparisons(long comparisons) {
+        this.comparisons = comparisons;
+    }
+
     public void selectionSort(int[] arr) {
+        setComparisons(0);
+        setSwaps(0);
         // Verificação se a lista não está vazia
         if (arr.length == 0) {
             return;
         }
-
         int min;
         int temp;
-
         for (int i = 0; i < arr.length - 1; i++) {
             min = i;
             // Percorre a lista até encontrar o menor elemento dos itens não ordenados restantes
             for (int j = i + 1; j < arr.length; j++) {
-                comparisons++;
+                setComparisons(getComparisons() + 1);
                 if (arr[j] < arr[min]) {
                     min = j;
                 }
@@ -37,7 +45,7 @@ public class SelectionSort {
             temp = arr[i];
             arr[i] = arr[min];
             arr[min] = temp;
-            swaps++;
+            setSwaps(getSwaps() + 1);
 
         }
     }
